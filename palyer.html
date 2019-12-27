@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>M3U8在线播放器</title>
+    <link rel="stylesheet" href="node_modules/dplayer/dist/DPlayer.min.css">
+    <style> 
+        input[type=text] {
+          display: inline;
+          width: 80%;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+          background-color: white;
+          background-image: url('https://static.runoob.com/images/mix/searchicon.png');
+          background-position: 10px 10px; 
+          background-repeat: no-repeat;
+          padding: 12px 20px 12px 40px;
+        }
+        #grad1 {
+        height: 100rem;
+          background-repeat: no-repeat;
+          background-image: linear-gradient(#e66465, #9198e5);
+        }
+        .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        }
+        .button2:hover {
+         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        h1
+        {
+            text-shadow: 5px 5px 5px #9198e5;
+            text-align: center;
+            color: #ccc;
+        }
+        /* 下拉按钮样式 */
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* 容器 <div> - 需要定位下拉内容 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 下拉内容 (默认隐藏) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+        /* 下拉菜单的链接 */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* 鼠标移上去后修改下拉菜单链接颜色 */
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        /* 在鼠标移上去后显示下拉菜单 */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 当下拉内容显示后修改下拉按钮的背景颜色 */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+        </style>
+       
+</head>
+<body id="grad1"> 
+<h1>M3U8在线播放器</h1>
+<div id="dplayer"></div>
+<div style="left: 50%;text-align: center;">
+<div class="dropdown">
+<button class="dropbtn">国内外直播源</button>
+<div class="dropdown-content">
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/hunanhd.m3u8","湖南卫视HD");'>湖南卫视HD</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/dfhd.m3u8","东方卫视HD");'>东方卫视HD</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/jshd.m3u8","江苏卫视HD");'>江苏卫视HD</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/zjhd.m3u8","浙江卫视HD");'>浙江卫视HD</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/zjtv.m3u8","浙江卫视");'>浙江卫视</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/btv1hd.m3u8","北京卫视HD");'>北京卫视HD</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/ahhd.m3u8","安徽卫视HD");'>安徽卫视HD</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/hljhd.m3u8","黑龙江卫视HD");'>黑龙江卫视HD</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/szhd.m3u8","深圳卫视HD");'>深圳卫视HD</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/gdhd.m3u","广东卫视HD");'>广东卫视HD</a>
+<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/tjhd.m3u8","天津卫视HD");'>天津卫视HD</a>
+
+</div>
+</div>
+<input id="src" type="text" placeholder="请输入要播放的m3u8链接...如:xxx.m3u8" >
+<button class="button button2" type="button" onclick="myFunction()">播放</button>
+<p id="demo" style="color: forestgreen;font-size:2.5em;"></p>
+</div>
+</body>
+</html>
+<script src="node_modules/hls.js/dist/hls.min.js"></script>
+<script src="node_modules/dplayer/dist/DPlayer.min.js"></script>
+<script>
+    var url;
+    var islive;
+    islive=false;
+    function changelive(value,channel){
+        document.getElementById("src").value=value
+        url = document.getElementById("src").value;
+        document.getElementById("demo").innerHTML = "播放加载时间有可能慢些请耐心等待，长时间未播放可能链接地址不可用<br/>当前播放："+channel;
+        const dp = new DPlayer({
+        container: document.getElementById('dplayer'),
+        autoplay: true,
+        live:true,
+        screenshot: true,
+            video: {
+                //url: document.getElementById("src").value,
+                url: url,
+            type: 'hls'
+            },
+            pluginOptions:{
+                hls:{
+                },
+            },
+        });
+    }
+    function myFunction() {
+    url = document.getElementById("src").value;
+    document.getElementById("demo").innerHTML = "播放加载时间有可能慢些请耐心等待，长时间未播放可能链接地址不可用<br/>当前播放："+url;
+    const dp = new DPlayer({
+    container: document.getElementById('dplayer'),
+	autoplay: true,
+    live:false,
+	screenshot: true,
+        video: {
+            //url: document.getElementById("src").value,
+            url: url,
+	    type: 'hls'
+        },
+        pluginOptions:{
+            hls:{
+            },
+        },
+    });
+    }
+</script>
