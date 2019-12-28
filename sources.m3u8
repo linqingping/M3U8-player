@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-logo="http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2016/1/25/1453690621284_114.png" tvg-name="CCTV1" ,CCTV-1综合HD
+#EXTINF:-1 CCTV-1综合HD
 http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8
 #EXTINF:-1 ,CCTV-2财经
 http://ivi.bupt.edu.cn/hls/cctv2.m3u8
