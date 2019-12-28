@@ -133,6 +133,7 @@
     function changelive(value,channel){
         document.getElementById("src").value=value
         url = document.getElementById("src").value;
+	document.getElementById("src").value=""
         document.getElementById("demo").innerHTML = "播放加载时间有可能慢些请耐心等待，长时间未播放可能链接地址不可用<br/>当前播放："+channel;
         const dp = new DPlayer({
         container: document.getElementById('dplayer'),
