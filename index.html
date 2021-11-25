@@ -107,14 +107,15 @@ var _hmt = _hmt || [];
         .dropdown:hover .dropbtn {
             background-color: #3e8e41;
         }
-	body
-	{ SCROLLBAR-FACE-COLOR: #dedede;
-	SCROLLBAR-HIGHLIGHT-COLOR: #F5F9FF;
-	SCROLLBAR-SHADOW-COLOR: #828282;
-	SCROLLBAR-3DLIGHT-COLOR: #828282;
-	SCROLLBAR-ARROW-COLOR: #797979;
-	SCROLLBAR-TRACK-COLOR: #cccccc;
-	SCROLLBAR-DARKSHADOW-COLOR: #ffffff
+	.iframe { 
+	  body { 
+	    ::-webkit-scrollbar-thumb {
+		background-color: #EFEFF0;
+		border: 1px solid transparent;
+		background-clip: padding-box;
+		border-radius: 5px;
+	    }        
+	  }
 	}
         </style>
        
