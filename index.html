@@ -15,11 +15,11 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-setTimeout("initlmg()",5*1000);
-function initlmg(){
-var allimg=document.getElementsByName("myimg");
-for(var i=0;i<allimg.length;i++)
-allimg[i].style.display="none";
+(function(){
+        $('#J_btn').on('click', function(){
+            $('#J_box').toggle();
+        });
+ })();
 </script>
 <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
 <title>M3U8在线播放器_最新电视剧免费在线观看_电视剧大全</title>
@@ -123,7 +123,7 @@ allimg[i].style.display="none";
 	  }
 	}
         </style>
-       
+ <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.js" type="text/javascript"></script>      
 </head>
 <body id="grad1">
 <h1>M3U8在线播放器</h1>
@@ -155,7 +155,10 @@ allimg[i].style.display="none";
         </span>
 	</div>
 <a id=index href='#showmain' style="text-decoration:none"><font color='#EFFBEF'>观影模式</font></a>
-<div style="float:right;position: absolute;z-index: 10"><img src="./495392085.jpg" width="300" name="myimg"></div>
+<div id="J_box" style="border:1px solid #000;width:300px;">
+      <button type="button" id="J_btn">隐藏显示</button><br/>
+      <img src="./495392085.jpg" width="300px">
+</div>
 <iframe marginheight=0 marginwidth=0 frameborder=0 width=100% style="overflow-x:hidden;" height=100% scrolling=auto src="https://kanjuwang.net/" name=showmain id=showmain onload="resize();">不能正常显示</iframe>
 </body>
 </html>
