@@ -4,4 +4,4 @@
 ## 播放器地址：https://linqingping.github.io/M3U8-player/
 ![Image text](https://github.com/linqingping/M3U8-player/blob/master/QR.png)
 ### 感谢支持
-![Image text](https://github.com/linqingping/M3U8-player/blob/master/webwxgetmsgimg.jpeg = 250x250)
+![Image text](https://github.com/linqingping/M3U8-player/blob/master/webwxgetmsgimg.jpeg=250x250)
