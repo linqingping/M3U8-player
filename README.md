@@ -1,5 +1,7 @@
-# M3U8ÔÚÏß²¥·ÅÆ÷
-## ±¾Õ¾Ö§³Ö²¿·ÖÔÚÏßµçÊÓÖ±²¥£¬Ò²¿ÉÒÔ¸ù¾İ×Ô¼ºĞèÇó¸´ÖÆ×Ô¼ºµÄm3u8µØÖ·½øĞĞ²¥·Å
-## ±¾Õ¾´¿×öÑ§Ï°½»Á÷Ê¹ÓÃ£¬Çë²»Òª½øĞĞÆäËûÎ¥·¨»î¶¯
-## ²¥·ÅÆ÷µØÖ·£ºhttps://linqingping.github.io/M3U8-player/
+# M3U8åœ¨çº¿æ’­æ”¾å™¨
+## æœ¬ç«™æ”¯æŒéƒ¨åˆ†åœ¨çº¿ç”µè§†ç›´æ’­ï¼Œä¹Ÿå¯ä»¥æ ¹æ®è‡ªå·±éœ€æ±‚å¤åˆ¶è‡ªå·±çš„m3u8åœ°å€è¿›è¡Œæ’­æ”¾
+## æœ¬ç«™çº¯åšå­¦ä¹ äº¤æµä½¿ç”¨ï¼Œè¯·ä¸è¦è¿›è¡Œå…¶ä»–è¿æ³•æ´»åŠ¨
+## æ’­æ”¾å™¨åœ°å€ï¼šhttps://linqingping.github.io/M3U8-player/
 ![Image text](https://github.com/linqingping/M3U8-player/blob/master/QR.png)
+### æ„Ÿè°¢æ”¯æŒ
+![Image text](https://github.com/linqingping/M3U8-player/blob/master/webwxgetmsgimg.jpeg)
