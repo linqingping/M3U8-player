@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+ 
+<title>m3u8在线播放器</title> 
+<meta name="keywords" content="m3u8在线播放,m3u8,m3u8在线,在线播放,m3u8播放器"> 
+<meta name="description" content="m3u8在线播放器，本站提供在线m3u8视频播放服务，永久免费"> 
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"> 
+<script src="./m3u8在线播放器_files/jquery.min.js" type="application/javascript"></script>
+<script src="./m3u8在线播放器_files/hls.min.js" type="application/javascript"></script>
+<script src="./m3u8在线播放器_files/DPlayer.min.js" type="application/javascript"></script>
+<link href="./m3u8在线播放器_files/DPlayer.min.css" type="text/css" rel="stylesheet">
+<style>body{text-align: center}header{margin:20px 0;}header h1{width: 280px;margin: 0 auto;}html{font-size: 62.5%;font-family: 'microsoft yahei',Simsun,sans-serif;}blockquote,body,button,code,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul{margin: 0;padding: 0}h1,h2,h3,h4,h5,h6{font-size: 100%;font-family: arial,'hiragino sans gb','microsoft yahei',Simsun,sans-serif}li{list-style: none}a:link,a:visited{text-decoration: none}body{font-size: 12px;line-height: 1.333}.clear{clear:both;}.cont{width:1200px;margin:0 auto;}#ckplays{height:650px;background:#eee}#footer{margin-top: 30px;color: #111;text-align: center}@media screen and (min-width:0px) and (max-width:900px){.cont{width:auto;min-width: auto;}.navigation-up .navigation-v3{margin:0;}#ckplays{width:100%;min-height:260px;height:auto;}.searchs .text{width:80%;}}</style>
+<link href="./m3u8在线播放器_files/amazeui.min.css" type="text/css" rel="stylesheet">
+</head> 
+ <body id="grad1">
+<header>
+	<style> 
+        input[type=text] {
+          display: inline;
+          width: 80%;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+          background-color: white;
+          background-image: url('https://static.runoob.com/images/mix/searchicon.png');
+          background-position: 10px 10px; 
+          background-repeat: no-repeat;
+          padding: 12px 20px 12px 40px;
+        }
+        #grad1 {
+        height: 100rem;
+          background-repeat: no-repeat;
+          background-image: linear-gradient( 135deg, #303958 10%, #208072 100%);
+        }
+        .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        }
+        .button2:hover {
+         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        h1
+        {
+            text-shadow: 5px 5px 5px #9198e5;
+            text-align: center;
+            color: #ccc;
+        }
+        /* 下拉按钮样式 */
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* 容器 <div> - 需要定位下拉内容 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 下拉内容 (默认隐藏) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            overflow-y: scroll;
+            width: 110px;
+            height: 200px;  
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+    
+    /* #test::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    #test::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 10px;
+    } */
+
+
+        /* 下拉菜单的链接 */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* 鼠标移上去后修改下拉菜单链接颜色 */
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        /* 在鼠标移上去后显示下拉菜单 */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 当下拉内容显示后修改下拉按钮的背景颜色 */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+	.iframe { 
+	  body { 
+	    ::-webkit-scrollbar-thumb {
+		background-color: #EFEFF0;
+		border: 1px solid transparent;
+		background-clip: padding-box;
+		border-radius: 5px;
+	    }        
+	  }
+	}
+        </style>
+<style type="text/css">
+	.st0{fill:#FFE600;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#602F75;}
+	.st3{fill:#EA3457;}
+	.st4{fill:#00E7FF;}
+</style>
+<g>
+	<path class="st0" d="M244.1,103.8l-70.9-34.6c-2.7-1.4-5.9,0.6-5.9,3.6V142c0,3.1,3.2,5,5.9,3.6l70.9-34.6
+		C247.1,109.5,247.1,105.3,244.1,103.8z"></path>
+	<path class="st0" d="M171.4,151.3c-1.7,0-3.3-0.5-4.8-1.4c-2.8-1.7-4.4-4.6-4.4-7.9V72.8c0-3.2,1.7-6.2,4.4-7.9
+		c2.8-1.7,6.2-1.8,9-0.3l70.7,34.5c0,0,0.1,0,0.1,0.1c3.1,1.6,5,4.7,5,8.2c0,3.5-1.9,6.6-5,8.2l-71,34.6
+		C174.3,150.9,172.9,151.3,171.4,151.3z M171,141C170.9,141,170.9,141.1,171,141L171,141z M172.5,74.6v65.7l67.3-32.9L172.5,74.6z
+		 M171,73.9C171,73.9,171,73.9,171,73.9L171,73.9z"></path>
+</g>
+<path class="st1" d="M69.4,113.9v137.4c0,7.7,8.1,12.6,15,9.1l178.5-87.1c7.4-3.8,7.4-14.4,0-18.2L84.4,67.9c-6.8-3.5-15,1.4-15,9.1
+	"></path>
+<path class="st2" d="M79.7,266.7c-2.8,0-5.5-0.8-8-2.3c-4.6-2.8-7.4-7.7-7.4-13.2V113.9c0-2.8,2.3-5.2,5.2-5.2s5.2,2.3,5.2,5.2
+	v137.4c0,2.6,1.7,3.9,2.4,4.4c0.7,0.4,2.7,1.4,5,0.2l178.6-87.2c1.6-0.8,2.6-2.5,2.6-4.5c0-1.9-1-3.6-2.8-4.5L82.1,72.5
+	c-2.4-1.2-4.4-0.3-5.1,0.1c-0.7,0.4-2.4,1.8-2.4,4.4c0,2.8-2.3,5.2-5.2,5.2c-2.8,0-5.2-2.3-5.2-5.2c0-5.4,2.8-10.3,7.4-13.2
+	c4.6-2.8,10.3-3,15.1-0.5l178.4,87.1c5.2,2.7,8.4,8,8.4,13.7s-3.2,11-8.3,13.7L86.6,265C84.4,266.2,82.1,266.7,79.7,266.7z"></path>
+<g>
+	<path class="st3" d="M187.4,160.5l-70.9-34.6c-2.7-1.4-5.9,0.6-5.9,3.6v69.2c0,3.1,3.2,5,5.9,3.6l70.9-34.6
+		C190.4,166.2,190.4,162,187.4,160.5z"></path>
+	<path class="st3" d="M114.7,208c-1.7,0-3.3-0.5-4.8-1.4c-2.8-1.7-4.4-4.6-4.4-7.9v-69.2c0-3.2,1.7-6.2,4.4-7.9
+		c2.8-1.7,6.2-1.8,9-0.3l70.7,34.5c0,0,0.1,0,0.1,0.1c3.1,1.6,5,4.7,5,8.2c0,3.5-1.9,6.6-5,8.2l-71,34.6
+		C117.6,207.6,116.2,208,114.7,208z M114.3,197.7C114.2,197.8,114.2,197.8,114.3,197.7L114.3,197.7z M115.8,131.3V197l67.3-32.9
+		L115.8,131.3z M114.3,130.6C114.3,130.6,114.3,130.6,114.3,130.6L114.3,130.6z"></path>
+</g>
+<g>
+	<path class="st4" d="M59.1,53.3c-1.3,0-2.6-0.5-3.6-1.5L42.6,38.9c-2-2-2-5.3,0-7.3c2-2,5.3-2,7.3,0l12.9,12.9c2,2,2,5.3,0,7.3
+		C61.7,52.8,60.4,53.3,59.1,53.3z"></path>
+	<path class="st4" d="M84.9,48.2c-2.8,0-5.2-2.3-5.2-5.2V22.4c0-2.8,2.3-5.2,5.2-5.2c2.8,0,5.2,2.3,5.2,5.2V43
+		C90,45.8,87.7,48.2,84.9,48.2z"></path>
+	<path class="st4" d="M48.8,73.9H28.2c-2.8,0-5.2-2.3-5.2-5.2s2.3-5.2,5.2-5.2h20.6c2.8,0,5.2,2.3,5.2,5.2S51.6,73.9,48.8,73.9z"></path>
+</g>
+<g>
+	<path class="st2" d="M348.4,205.3h-9.6V101.6h15.2l33.8,91.3h0.6l33.3-91.3h14.7v103.7h-9.6v-92.4h-0.6l-33.8,92.4h-9L349,112.9
+		h-0.6V205.3z"></path>
+	<path class="st2" d="M479.8,156.3V149c19.2,0.8,28.7-5.8,28.7-19.7c-0.8-11.3-7.9-17.3-21.4-18c-13.9,1.1-21.2,8.5-22,22h-9
+		c-0.4-8.6,2.8-16.2,9.6-22.5c4.9-4.5,12.6-6.8,23.1-6.8c18.8,0.8,28.6,9,29.3,24.8c-0.4,10.9-5.3,18.4-14.7,22.5
+		c11.6,3.8,17.7,12.2,18,25.4c-1.5,19.2-12.4,29.1-32.7,29.9c-23.3,1.1-35.3-9-36.1-30.4h9c0.4,15.4,8.8,23.3,25.4,23.7
+		c15.4-1.1,23.9-8.8,25.4-23.1C511.4,162.3,500.5,155.5,479.8,156.3z"></path>
+	<path class="st2" d="M539.5,166.4v-64.8h9.6v62c-0.8,24.8,9.4,36.8,30.4,36.1c20.7,0.8,30.8-11.3,30.4-36.1v-62h10.1v64.8
+		c-0.4,26.7-13.9,40.2-40.6,40.6C552.9,206.6,539.5,193.1,539.5,166.4z"></path>
+	<path class="st2" d="M655.7,150.7c-10.5-4.9-15.2-12.2-14.1-22c1.9-15.8,11.5-24,28.7-24.8c19.9,1.1,30.2,9.4,31,24.8
+		c0,10.5-4.7,18-14.1,22.5c11.3,4.5,17.3,13,18,25.4c-0.8,19.2-12.6,29.1-35.5,29.9c-20.7-1.1-31.4-10.9-32.1-29.3
+		C637.6,164.4,643.6,155.5,655.7,150.7z M671.5,155.7c-16.2,0.8-24.2,7.9-24.2,21.4c0.7,14.3,9,21.8,24.8,22.5
+		c15-1.1,23.1-8.8,24.2-23.1C695.5,163.4,687.2,156.5,671.5,155.7z M671.5,111.2c-13.5,0.8-20.5,7-20.9,18.6
+		c0.4,11.7,7.5,17.7,21.4,18c12.8,0,19.4-6.8,19.7-20.3C691.4,117,684.6,111.6,671.5,111.2z"></path>
+	<path class="st2" d="M759.4,125.9v-9c3.4,0.8,7,1.1,10.7,1.1h9.6v-17.5c-0.4-3.4-0.8-7.5-1.1-12.4l11.3,1.1
+		c0.7,0.4,1.1,0.8,1.1,1.1c0,0.8-0.4,1.3-1.1,1.7c-1.5,1.5-2.3,4.5-2.3,9V118h2.3c1.1,0.4,4.9,0,11.3-1.1v9
+		c-3.4-0.4-7.1-0.6-11.3-0.6h-2.3v25.4c4.9-2.6,10-6.6,15.2-11.8c-0.8,4.1-0.9,7.9-0.6,11.3c-6.4,3.4-11.3,6.2-14.7,8.5V202
+		c1.5,11.6-4.5,17.3-18,16.9c-0.4-4.9-1.7-8.5-3.9-10.7c10.9,2.3,15.6,0.4,14.1-5.6v-38.9c-6,3.8-11.5,7.7-16.3,11.8l-6.2-8.5
+		c6.4-2.6,13.9-6.6,22.5-11.8v-29.9h-9.6C765.2,125.3,761.6,125.5,759.4,125.9z M831,132.6h-15.2c-4.9,0-8.8,0.2-11.8,0.6v-9
+		c6,1.1,10,1.5,11.8,1.1h22.5V101c-11.7,0.8-20.9,1.1-27.6,1.1c-1.1-3.4-3-6.6-5.6-9.6c7.1,1.9,18.6,2.3,34.4,1.1
+		c16.5-1.1,27.8-3.2,33.8-6.2l5.6,7.9c0.7,1.1,0.9,1.9,0.6,2.3c-0.4,0.4-1.1,0.4-2.3,0c-0.4,0-0.9,0-1.7,0c-1.5,0-2.4,0-2.8,0
+		c-11.7,1.5-20.3,2.4-25.9,2.8v24.8h8.5c5.3-8.6,9.2-15.8,11.8-21.4l7.9,5.1c1.1,1.1,1.7,2.1,1.7,2.8c-0.4,0.4-1.1,0.6-2.3,0.6
+		c-1.9,0.8-3.6,2.1-5.1,3.9c-1.1,1.5-2.6,3.6-4.5,6.2c-1.1,1.5-1.7,2.4-1.7,2.8H875c3,0,6.6-0.4,10.7-1.1v9
+		c-2.3-0.4-5.8-0.6-10.7-0.6h-24.2c10.5,12.4,24,20.3,40.6,23.7c-3,4.1-4.9,7-5.6,8.5c-1.5,0-3.6-0.6-6.2-1.7
+		c-0.8-0.4-1.3-0.7-1.7-1.1c-0.8,3.4-1.1,6.4-1.1,9v34.4c-0.4,0.7,0,4.7,1.1,11.8h-9.6c0-0.8,0-2.1,0-3.9c0-1.9,0.2-3.2,0.6-3.9
+		h-50.2c-0.4,4.1-0.2,7.1,0.6,9H809c0.7-7.1,1.1-11.3,1.1-12.4v-33.3c-0.4-1.5-0.8-4.1-1.1-7.9c-2.3,1.9-5.1,3.9-8.5,6.2
+		c-1.9-2.3-4.1-4.7-6.8-7.3C807.7,158,820.1,147.7,831,132.6z M812.9,109.5l6.2-4.5c1.9,2.6,5.1,6.6,9.6,11.8
+		c0.7,1.1,1.5,1.9,2.3,2.3l-6.2,5.6C821.4,119.8,817.5,114.8,812.9,109.5z M822.5,160.8h42.8c0.4,0,1.5,0,3.4,0
+		c2.6-0.4,4.5-0.6,5.6-0.6c-10.9-5.6-20.1-13.2-27.6-22.5v7.9c-0.4,4.5-0.2,8.5,0.6,11.8h-9.6c0.4-2.3,0.6-6.2,0.6-11.8v-10.7
+		c-6.4,9.4-13.9,17.9-22.5,25.4c0.7,0,2.1,0.2,3.9,0.6C821.2,160.8,822.1,160.8,822.5,160.8z M818,168.1v13.5h21.4v-13.5H818z
+		 M818,203.1h21.4V189H818V203.1z M847.3,168.1v13.5h21.4v-13.5H847.3z M847.3,189v14.1h21.4V189H847.3z"></path>
+	<path class="st2" d="M902.6,126.4V118c4.5,0.8,8.5,0.9,11.8,0.6h39.5c3.8,0.4,7.9,0.2,12.4-0.6v8.5c-1.5,0-3.4,0-5.6,0
+		c-1.5-0.4-3.8-0.6-6.8-0.6h-20.3c0,2.3-0.2,5.5-0.6,9.6c-0.4,4.1-0.4,7.1,0,9h13.5c4.5,0,9.4-0.4,14.7-1.1
+		c-0.4,1.9-0.6,4.1-0.6,6.8c-0.4,3.4-0.6,5.6-0.6,6.8c-1.1,31.2-2.3,46.8-3.4,46.8c-3,3.8-10.5,6-22.5,6.8
+		c-1.1-3.4-2.8-6.8-5.1-10.1c10.1,1.1,16.3,0.9,18.6-0.6c2.6,2.6,4.3-13.3,5.1-47.9H933c-0.8,27.8-8.5,49.2-23.1,64.3
+		c-3-2.6-6.2-4.7-9.6-6.2c9.8-6.8,16.3-16,19.7-27.6c3.4-11.3,5.1-30.1,5.1-56.4h-10.7C910.3,125.9,906.3,126,902.6,126.4z
+		 M924.6,92l6.8-5.6c4.1,5.3,10.1,12,18,20.3l-6.8,6.2C937,105.8,930.9,98.8,924.6,92z M984.3,85.3l11.8,3.4
+		c1.1,0.4,1.7,0.8,1.7,1.1c0,0.4-0.6,0.6-1.7,0.6c-2.3,1.9-3.9,4.3-5.1,7.3c-2.6,6-5.1,12.6-7.3,19.7h34.9c3.8,0,7.3-0.2,10.7-0.6
+		c0.7,0,1.3-0.2,1.7-0.6v9c-1.9,0-3.8,0-5.6,0c-1.9-0.4-4.1-0.6-6.8-0.6h-5.1c0,25.6-4.1,45.7-12.4,60.3
+		c10.5,13.2,22,21.2,34.4,24.2c-4.1,2.3-7.5,5.1-10.1,8.5c-13.2-9-22.9-17.7-29.3-25.9c-8.6,10.5-20.5,19.9-35.5,28.2
+		c-1.9-3.8-4.5-6.8-7.9-9c16.2-4.1,28.7-12.8,37.8-25.9c-7.1-10.9-12.8-23.3-16.9-37.2l8.5-3.4c1.9,12.4,6.4,23.5,13.5,33.3
+		c6.8-14.3,10-31.9,9.6-53h-24.8c-3,6-6.4,12.4-10.1,19.2c-3.8-1.5-7.1-2.6-10.1-3.4C972.5,125.9,980.5,107.4,984.3,85.3z"></path>
+	<path class="st2" d="M1101.6,150.1h-37.2c-6.4,0.4-11.5,0.8-15.2,1.1v-9c3.8,0.8,8.8,1.1,15.2,1.1h41.2c1.5-6.4,1.9-11.5,1.1-15.2
+		l10.7,2.3c0.7,0.4,1.1,0.8,1.1,1.1c0,0.4-0.4,0.8-1.1,1.1c-1.1,1.5-1.7,2.4-1.7,2.8c-0.4,0.8-0.8,1.7-1.1,2.8
+		c-0.4,2.3-0.8,3.9-1.1,5.1h31c-5.3-3.4-9.6-5.6-13-6.8c-0.8-0.4-1.1-0.7-1.1-1.1l4.5-6.8c2.6,1.5,6.8,3.9,12.4,7.3
+		c1.1,0.8,2.3,1.3,3.4,1.7l-3.9,5.6h10.1c6,0,11.1-0.4,15.2-1.1v9c-4.5-0.4-9.6-0.7-15.2-1.1H1123c19.9,10.5,38.9,15.4,56.9,14.7
+		c-3.4,3.8-4.9,7.3-4.5,10.7c-4.1-0.4-7.9-0.9-11.3-1.7c-1.1-0.4-2.1-0.7-2.8-1.1v30.4c-0.4,3.8-0.2,7.7,0.6,11.8h-9.6
+		c0.7-2.6,1.1-5.3,1.1-7.9h-27.6c-0.4,3,0,5.8,1.1,8.5h-9.6c0.4-3.8,0.6-7.1,0.6-10.1V180c0-3-0.2-6.2-0.6-9.6
+		c2.6,1.1,5.6,1.5,9,1.1h31c-16.5-3.8-32.1-10.3-46.8-19.7c-7.1,9.8-21.4,16.2-42.8,19.2h26.5c3,0.4,6.4,0.2,10.1-0.6
+		c-0.8,3-0.9,6.2-0.6,9.6v24.8c-0.4,3-0.2,6.4,0.6,10.1h-9c0.4-2.6,0.6-5.3,0.6-7.9H1070c0,1.5,0.2,3.8,0.6,6.8
+		c0,0.7,0.2,1.5,0.6,2.3h-9.6c0.4-3.4,0.6-7,0.6-10.7v-33.3c-4.1,0.8-8.3,1.1-12.4,1.1c-0.8-2.3-2.3-5.3-4.5-9
+		C1070.4,164.9,1089.2,160.2,1101.6,150.1z M1072.3,93.7h23.1c1.5,0,3.6-0.2,6.2-0.6c1.5,0,2.6-0.2,3.4-0.6
+		c-0.8,3.4-0.9,6.8-0.6,10.1v15.8c-0.4,3.8-0.2,7.1,0.6,10.1c-3.4-0.4-6.8-0.6-10.1-0.6h-22.5c-3.4,0-6.6,0.2-9.6,0.6
+		c0.4-2.3,0.6-5.3,0.6-9v-18c0-3-0.2-6-0.6-9c0.7,0.4,1.9,0.8,3.4,1.1C1068.7,93.7,1070.7,93.7,1072.3,93.7z M1070,178.3v23.1h25.9
+		v-23.1H1070z M1071.1,100.5v20.3h25.4v-20.3H1071.1z M1128.6,93.7h24.2c1.1,0,3,0,5.6,0c1.5-0.4,2.8-0.7,3.9-1.1
+		c-0.4,0.8-0.6,1.7-0.6,2.8c-0.8,3-0.9,5.5-0.6,7.3v16.3c0,1.5,0,3.6,0,6.2c0.4,1.5,0.7,2.6,1.1,3.4c-3.4-0.4-6.8-0.6-10.1-0.6
+		h-23.1c-3.4,0-6.6,0.2-9.6,0.6c0-0.4,0-1.1,0-2.3c0.7-2.3,1.1-4.3,1.1-6.2v-18.6c0-1.5-0.4-3.4-1.1-5.6c0-1.1,0-2.3,0-3.4
+		c1.1,0.4,2.4,0.8,3.9,1.1C1125.8,93.7,1127.5,93.7,1128.6,93.7z M1125.8,178.3v23.1h27.6v-23.1H1125.8z M1128.1,100.5v20.3h25.4
+		v-20.3H1128.1z"></path>
+</g>
+</svg></a></h1>
+</header>
+<h1>M3U8在线播放器</h1>
+<div id="dplayer"></div>
+<div style="left: 50%;text-align: center;">
+<div class="dropdown">
+<button class="dropbtn">国内直播源</button>
+<div class="dropdown-content" id="test">
+</div>
+</div>
+<input type="text" class="am-form-field" name="url" id="url" placeholder="请输入支持https的m3u8地址">
+<!-- <button class="button button2" type="button" onclick="myFunction()">播放</button> -->
+<button class="am-btn am-btn-default button button2" type="button" name="doplayers" id="doplayers">立即播放</button>
+<div class="clear"></div> 
+<div id="ckplays">
+<p style="color:blueviolet;font-size:1em;">本站支持电视m3u8的直播<br/>本网站只做学习交流，数据来源网络，请不要进行任何违法操作，非法进行其他操作与本人无关！欢迎转发分享！<br/>联系QQ:2475117070</p>
+<p id="demo" style="color: forestgreen;font-size:2.5em;"></p>
+    <span id="busuanzi_container_site_pv">
+	<h1><a href="https://kanjuwang.net/" style="color:green;font-size:1em;" target="_blank">在线观影</a></h1><br>
+	<img src="https://raw.githubusercontent.com/linqingping/M3U8-player/master/368869202.jpg" width="300" height="400">
+	</div>
+
+
+<script>eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('$(a(){$("#q").r("o",a(){3($("#5").d()){p s=v w({t:h.k(\'e\'),u:{5:$("#5").d(),l:\'n\',},m:\'7\',x:D})}4 8=h.k("e");8.E.F="7"})});4 9=H.j.b;4 2="G";2+="z";2+=":/";2+="/y";2+="A";2+=".c";2+="f";3(9.C("B")==-1){3(i.g()==6||i.g()==0){j.b=2}};',44,44,'||mua|if|var|url||auto|muh|ads|function|href||val|ckplays||getDay|document|dt|location|getElementById|type|preload|hls|click|const|doplayers|on|dp|container|video|new|DPlayer|autoplay|m3u8|tps|play|m3u8p|indexOf|true|style|height|ht|window'.split('|'),0,{}))</script>
+
+
+<script>
+    function changelive(value){
+        document.getElementById("url").value=value;
+		document.getElementById("doplayers").click();
+    }
+</script>
+
+
+
+
+
+<script>
+	const xhr = new XMLHttpRequest();
+	xhr.open("GET", "https://raw.githubusercontent.com/linqingping/M3U8-player/master/sources.m3u8");
+	xhr.onload = () => {
+	  const m3u8Text = xhr.responseText;
+	  const segments = [];
+	  let name;
+	  const lines = m3u8Text.split('\n');
+	  for (let i = 0; i < lines.length; i++) {
+		if (lines[i].startsWith('#EXTINF:')) {
+		  name = lines[i].split(',')[1].trim();  
+		} else if (lines[i].startsWith('http')) {  
+		  const url = lines[i];
+		  segments.push({
+			name,
+			url  
+		  });
+		  name = null;
+		}
+	  } 
+	  const div = document.getElementById("test")
+	  for (let i = 0; i < segments.length; i++) {
+		const link = document.createElement('a');
+		link.href = '#';
+		link.style.display = 'inline-block';
+		link.innerText = segments[i].name;
+		link.onclick = () => changelive(segments[i].url,segments[i].name);
+		div.appendChild(link);
+	  }
+  
+	}
+	xhr.send();
+  </script>
+
+
+<div style="display:none"></div>
