@@ -272,7 +272,7 @@
 	  for (let i = 0; i < lines.length; i++) {
 		if (lines[i].startsWith('#EXTINF:')) {
 		  name = lines[i].split(',')[1].trim();  
-		} else if (lines[i].startsWith('http')) {  
+		} else if (lines[i].startsWith('https')) {  
 		  const url = lines[i];
 		  segments.push({
 			name,
