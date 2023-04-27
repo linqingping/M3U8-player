@@ -263,7 +263,7 @@ var _hmt = _hmt || [];
     for (let i = 0; i < lines.length; i++) {
       if (lines[i].startsWith('#EXTINF:')) {
         name = lines[i].split(',')[1].trim();  
-      } else if (lines[i].startsWith('http')) {  
+      } else if (lines[i].startsWith('https')) {  
         const url = lines[i];
         segments.push({
           name,
@@ -272,6 +272,7 @@ var _hmt = _hmt || [];
         name = null;
       }
     } 
+    //部署在github上只能使用https的源
     const div = document.getElementById("test")
     for (let i = 0; i < segments.length; i++) {
       const link = document.createElement('a');
