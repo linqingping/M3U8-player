@@ -125,19 +125,9 @@ var _hmt = _hmt || [];
 <div id="dplayer"></div>
 <div style="left: 50%;text-align: center;">
 <div class="dropdown">
-<button class="dropbtn"><a href="https://github.com/linqingping/M3U8-player/blob/master/sources.m3u8" style="display: inline-block;" target="_blank">国内卫视直播源</a></button>
-<div class="dropdown-content">
-<!-- <a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/hunanhd.m3u8","湖南卫视HD");'>湖南卫视HD</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/dfhd.m3u8","东方卫视HD");'>东方卫视HD</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/jshd.m3u8","江苏卫视HD");'>江苏卫视HD</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/zjhd.m3u8","浙江卫视HD");'>浙江卫视HD</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/zjtv.m3u8","浙江卫视");'>浙江卫视</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/btv1hd.m3u8","北京卫视HD");'>北京卫视HD</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/ahhd.m3u8","安徽卫视HD");'>安徽卫视HD</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/hljhd.m3u8","黑龙江卫视HD");'>黑龙江卫视HD</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/szhd.m3u8","深圳卫视HD");'>深圳卫视HD</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/gdhd.m3u","广东卫视HD");'>广东卫视HD</a>
-<a href="#" style="display: inline-block;" onclick='changelive("http://ivi.bupt.edu.cn/hls/tjhd.m3u8","天津卫视HD");'>天津卫视HD</a> -->
+<button class="dropbtn">国内卫视直播源</button>
+<div class="dropdown-content" id="test">
+
 </div>
 </div>
 <input id="src" type="text" placeholder="请输入要播放的m3u8链接...如:xxx.m3u8" >
@@ -205,7 +195,7 @@ var _hmt = _hmt || [];
     function changelive(value,channel){
         document.getElementById("src").value=value
         url = document.getElementById("src").value;
-	document.getElementById("src").value=""
+	      document.getElementById("src").value=""
         document.getElementById("demo").innerHTML = "播放加载时间有可能慢些请耐心等待，长时间未播放可能链接地址不可用<br/>当前播放："+channel;
         const dp = new DPlayer({
         container: document.getElementById('dplayer'),
@@ -248,4 +238,37 @@ var _hmt = _hmt || [];
         },
     });
     }
+</script>
+<script>
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://raw.githubusercontent.com/linqingping/M3U8-player/master/sources.m3u8");
+  xhr.onload = () => {
+    const m3u8Text = xhr.responseText;
+    const segments = [];
+    let name;
+    const lines = m3u8Text.split('\n');
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i].startsWith('#EXTINF:')) {
+        name = lines[i].split(',')[1].trim();  
+      } else if (lines[i].startsWith('http')) {  
+        const url = lines[i];
+        segments.push({
+          name,
+          url  
+        });
+        name = null;
+      }
+    } 
+    const div = document.getElementById("test")
+    for (let i = 0; i < segments.length; i++) {
+      const link = document.createElement('a');
+      link.href = '#';
+      link.style.display = 'inline-block';
+      link.innerText = segments[i].name;
+      link.onclick = () => changelive(segments[i].url,segments[i].name);
+      div.appendChild(link);
+    }
+
+  }
+  xhr.send();
 </script>
