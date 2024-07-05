@@ -1,0 +1,127 @@
+<!--            
+     background-image: url("/home/lin/图片/the-Book-of-Answers-online.jpg"); /* 使用你的书封面图片 URL */
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>答案之书</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            color: #333; /* 设置默认文字颜色 */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .book-cover {
+            width: 300px;
+            height: 400px;
+            background-image: url("/home/lin/图片/the-Book-of-Answers-online.jpg"); /* 使用你的书封面图片 URL */
+            background-size: cover;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        #answer {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 15px;
+            border: 2px solid #ddd; /* 边框改为2px */
+            border-radius: 10px; /* 圆角更大 */
+            background-color: #f8f8f8;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            display: none; /* 默认隐藏 */
+            text-align: center;
+        }
+
+        #instructions {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50; /* 标题颜色 */
+        }
+
+        #instructions strong {
+            color: #ff5722; /* 强调文字颜色 */
+        }
+
+        #instructions {
+            font-style: italic; /* 文字提示使用斜体 */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>答案之书</h1>
+        <div class="book-cover" id="bookCover"></div>
+        <div id="answer"></div>
+        <div id="instructions">
+            当你觉得困惑的时候，点击<strong>答案之书</strong>，它将给你答案 <br>
+            心里默念你的问题，闭上眼睛冥想5秒 <br>
+            然后点击<strong>答案之书</strong>
+        </div>
+    </div>
+
+    <script>
+        const bookCover = document.getElementById('bookCover');
+        const answerDiv = document.getElementById('answer');
+
+        const suggestions = [
+            "按下关闭", "按照你的意愿", "把它写下来", "保持开放的心态", "保持灵活", "保存你的精力", "被人肯定", "避免第一个解决方案", "别浪费时间了", "别傻了",
+            "不管你做什么，结果将持久", "不管是什么", "不幸的是极有可能的", "不要担心", "不要等待", "不要赌", "不要过分", "不要忽视显而易见的", "不要迫于压力太快",
+            "不要让别人知道", "不要忘记有乐趣", "不要陷入你的感情", "不要犹豫", "不宜在这个时候", "不用怀疑了", "采用一个冒险的态度", "尝试一种更不太可能的解决方案", "从来没有",
+            "从现在开始, 一年也没有关系", "答案就在你的后院", "答案可能会在另一种语言", "打赌", "当然", "等待一个更好的机会", "等一等", "负责", "告诉别人它对你意味着什么",
+            "给它你的一切", "更慷慨", "过去的事就让它过去吧", "毫无疑问", "合作将会是关键", "很快就会解决它", "花更多的时间来决定", "怀疑", "会很棒的", "会有障碍要克服",
+            "获得更清晰的视野", "机会不会很快再来", "继续前行", "接受改变你的日常行为", "结果会是好的", "尽情体验", "绝对不是", "看看会发生什么", "考虑一下这个机会", "可以",
+            "离开旧的解决方案", "列出原因", "令人震惊的事件可能发生的", "履行你自己的义务", "冒险一试", "没有", "没有保证", "那将是浪费钱", "那是脱离你的控制", "耐心的等待",
+            "耐心点", "你必须", "你不会失望的", "你的行动将会改善", "你还是问问爸爸吧", "你还是问问妈妈吧", "你会得到最后的决定", "你会发现一切你需要知道的", "你会很高兴你做了",
+            "你会后悔的", "你将不得不补回来", "你将不得不妥协", "你将需要适应", "你可能会反对", "你可能会放弃其他的东西", "你可能觉得自己无法妥协", "你太近的看了", "你现在必须行动",
+            "你需要考虑其他办法", "你需要主动出击", "你一定有支持", "你真的不在乎", "你知道现在比以前更好", "您需要了解更多信息", "其他人将取决于你的选择", "情况不明",
+            "情况将很快发生改变", "如果你按我说的做", "如果你不反抗", "如果你不孤单", "如果是，做的很好；如果不是，就不要这么做；", "删除你自己的障碍物", "设定优先等级是一个必要的过程！",
+            "实际一点吧", "似乎已经是真实的了", "是的，但不要强迫", "是你走的时候", "是值得的麻烦", "数到10；再问", "说出来吧", "它会让你付出代价", "它会支持你的",
+            "探讨其俏皮的好奇心", "调查研究，然后享受它！", "完成其他事情的第一", "为了确保能作出最佳决策，需要保持冷静", "为什么不列出原因", "为突发事件做好准备", "温柔的坚持就是胜利",
+            "无论如何你可以提升", "现在你可以", "相关的问题可能的浮出水面", "相信你的原始思想", "相信自己的直觉", "小心谨慎的靠近", "笑一下", "须以较宽松的步伐",
+            "需要一个相当大的努力", "寻找更多的选择", "要解决", "也许", "也许，当你老了", "以后处理", "有充分的理由保持乐观", "有时候选择太多，就代表着无从选择！",
+            "与另一种情况有潜在的联系", "援助会让你成功进步", "允许你选择先休息一下", "运用你的想象力", "仔细聆听；那么你就会知道", "在这个时候不要问太多了", "早点做到这一点",
+            "这不可能失败", "这不是重要的", "这个似乎放心", "这会带来好运", "这将更好地专注于自己的工作", "这将会创造一个扰乱", "这将是一种享受", "这将影响别人看你",
+            "这可能很难，但你会发现它的价值", "这可能是特别的", "这可能已经是木已成舟", "这肯定会让事情变得有趣", "这仍然是不可预测的", "这是不明智的", "这是不确定的", "这是不值得的斗争",
+            "这是非常重要", "这是肯定的", "这是你不会忘记的", "这是一个不错的时间安排", "这是一个很好的时机，来制定新计划", "只做一次", "重新考虑你的方法", "重新确定优先次序什么是重要的",
+            "注意你的节奏", "注重细节", "专注你的家庭生活", "转移你的焦点", "最好的解决办法可能不是明显的", "尊重规则", "遵循别人的引导", "遵循专家的建议"
+        ];
+
+        bookCover.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * suggestions.length);
+            answerDiv.textContent = suggestions[randomIndex];
+            answerDiv.style.display = 'block'; // 首先显示答案框
+
+            // 延迟 5 秒后刷新页面
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000); // 延迟 5 秒
+        });
+    </script>
+</body>
+</html>
